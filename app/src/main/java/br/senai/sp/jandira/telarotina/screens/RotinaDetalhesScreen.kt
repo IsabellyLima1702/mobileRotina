@@ -131,7 +131,7 @@ fun RotinaDetalhesScreen() {
             OutlinedButton(
                 onClick = { },
                 modifier = Modifier
-                    .width(120.dp)
+                    .width(110.dp)
                     .height(36.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFF6C7CE7),
