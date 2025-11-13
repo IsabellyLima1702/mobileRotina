@@ -151,25 +151,25 @@ fun BemVindoCriarScreen() {
                 ),
                 contentPadding = PaddingValues(start = 6.dp, end = 0.dp)
             ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Filled.Add,
-                        contentDescription = "Adicionar",
-                        tint = Color.White
-                    )
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text(
-                        text = "Criar",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Normal,
-                        fontFamily = kronaOneFont,
-                        color = Color.White
-                    )
-                }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Start,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Add,
+                            contentDescription = "Adicionar",
+                            tint = Color.White
+                        )
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Text(
+                            text = "Criar",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
+                            fontFamily = kronaOneFont,
+                            color = Color.White
+                        )
+                    }
             }
             }
             
