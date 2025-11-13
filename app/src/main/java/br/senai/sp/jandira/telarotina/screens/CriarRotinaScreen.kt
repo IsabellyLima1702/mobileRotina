@@ -2,6 +2,7 @@ package br.senai.sp.jandira.telarotina.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,7 +16,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -31,6 +34,7 @@ fun CriarRotinaScreen() {
     var descricao by remember { mutableStateOf("") }
     var hora by remember { mutableStateOf("00:00") }
     var data by remember { mutableStateOf("") }
+    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
     
     // Define Krona One font family
     val kronaOneFont = FontFamily(
@@ -101,14 +105,26 @@ fun CriarRotinaScreen() {
             Spacer(modifier = Modifier.height(20.dp))
             
             // Title
-            Text(
-                text = "Crie uma\nnova Rotina",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Normal,
-                fontFamily = kronaOneFont,
-                color = Color.Black,
-                lineHeight = 28.sp
-            )
+            Row(
+                verticalAlignment = Alignment.Top
+            ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Seta",
+                    tint = Color.Black,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(top = 4.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Criar uma nova rotina",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = kronaOneFont,
+                    color = Color.Black
+                )
+            }
             
             Spacer(modifier = Modifier.height(40.dp))
             
@@ -116,15 +132,16 @@ fun CriarRotinaScreen() {
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp),
+                    .height(360.dp)
+                    .border(1.dp, Color.White, RoundedCornerShape(16.dp)),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF6C7CE7)),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(20.dp),
+                        .padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     // Título and Hora Row
@@ -250,17 +267,28 @@ fun CriarRotinaScreen() {
                         }
                     }
                     
+                    Spacer(modifier = Modifier.height(2.dp))
+                    Divider(
+                        color = Color.White,
+                        thickness = 2.dp,
+                        modifier = Modifier.padding(horizontal = 24.dp)
+                    )
                     Spacer(modifier = Modifier.height(8.dp))
                     
                     // Add Button
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
+                        horizontalArrangement = Arrangement.Start
                     ) {
                         IconButton(
                             onClick = { },
                             modifier = Modifier
                                 .size(40.dp)
+                                .border(
+                                    width = 1.dp,
+                                    color = Color.White,
+                                    shape = RoundedCornerShape(20.dp)
+                                )
                                 .background(
                                     Color(0xFF8A94F0),
                                     RoundedCornerShape(20.dp)
@@ -278,23 +306,31 @@ fun CriarRotinaScreen() {
                     Spacer(modifier = Modifier.weight(1f))
                     
                     // Criar Button
-                    Button(
-                        onClick = { },
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(40.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color.White,
-                            contentColor = Color.Black
-                        ),
-                        shape = RoundedCornerShape(20.dp)
+                            .padding(end = 8.dp),
+                        horizontalArrangement = Arrangement.End
                     ) {
-                        Text(
-                            text = "Criar",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Normal,
-                            fontFamily = kronaOneFont
-                        )
+                        OutlinedButton(
+                            onClick = { },
+                            modifier = Modifier
+                                .height(32.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                containerColor = Color.White,
+                                contentColor = Color.Black
+                            ),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.Black),
+                            shape = RoundedCornerShape(16.dp),
+                            contentPadding = PaddingValues(horizontal = 12.dp)
+                        ) {
+                            Text(
+                                text = "Criar",
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.Normal,
+                                fontFamily = kronaOneFont
+                            )
+                        }
                     }
                 }
             }

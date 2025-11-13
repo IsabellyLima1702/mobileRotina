@@ -136,8 +136,8 @@ fun BemVindoCriarScreen() {
                 OutlinedButton(
                 onClick = { },
                 modifier = Modifier
-                    .width(140.dp)
-                    .height(40.dp),
+                    .width(120.dp)
+                    .height(36.dp),
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = Color(0xFF6C7CE7),
                     contentColor = Color.White
@@ -148,7 +148,8 @@ fun BemVindoCriarScreen() {
                     defaultElevation = 6.dp,
                     pressedElevation = 8.dp,
                     disabledElevation = 0.dp
-                )
+                ),
+                contentPadding = PaddingValues(start = 6.dp, end = 0.dp)
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -156,12 +157,11 @@ fun BemVindoCriarScreen() {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_add_bold),
+                        imageVector = Icons.Filled.Add,
                         contentDescription = "Adicionar",
-                        tint = Color.White,
-                        modifier = Modifier.size(24.dp)
+                        tint = Color.White
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                     Text(
                         text = "Criar",
                         fontSize = 16.sp,

@@ -2,9 +2,11 @@ package br.senai.sp.jandira.telarotina.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Person
@@ -37,14 +39,18 @@ fun RotinaDetalhesScreen() {
         // Header
         TopAppBar(
             title = {
-                Image(
-                    painter = painterResource(id = R.drawable.logo_baby),
-                    contentDescription = "S♥S Baby Logo",
-                    modifier = Modifier
-                        .height(56.dp)
-                        .width(100.dp)
-                        .padding(start = 8.dp)
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo_baby),
+                        contentDescription = "S♥S Baby Logo",
+                        modifier = Modifier
+                            .size(80.dp)
+                    )
+                }
             },
             navigationIcon = {
                 IconButton(onClick = { }) {
@@ -57,17 +63,20 @@ fun RotinaDetalhesScreen() {
             },
             actions = {
                 IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Default.Notifications,
-                        contentDescription = "Notificações",
-                        tint = Color.Blue
+                    Image(
+                        painter = painterResource(id = R.drawable.notificacoes),
+                        contentDescription = "S♥S Baby Logo",
+                        modifier = Modifier
+                            .size(50.dp)
                     )
                 }
                 IconButton(onClick = { }) {
-                    Icon(
-                        imageVector = Icons.Default.Person,
-                        contentDescription = "Perfil",
-                        tint = Color.Blue
+                    Image(
+                        painter = painterResource(id = R.drawable.perfil),
+                        contentDescription = "S♥S Baby Logo",
+                        modifier = Modifier
+                            .size(50.dp)
+
                     )
                 }
             },
@@ -75,38 +84,7 @@ fun RotinaDetalhesScreen() {
                 containerColor = Color.White
             )
         )
-        
-        // Logo SOS BABY
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Icon(
-                imageVector = Icons.Default.ArrowBack,
-                contentDescription = "Voltar",
-                tint = Color.Gray
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Column {
-                Text(
-                    text = "SOS",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = kronaOneFont,
-                    color = Color.Gray
-                )
-                Text(
-                    text = "BABY",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = kronaOneFont,
-                    color = Color.Gray
-                )
-            }
-        }
-        
+
         // Content
         Column(
             modifier = Modifier
@@ -115,41 +93,82 @@ fun RotinaDetalhesScreen() {
             horizontalAlignment = Alignment.Start
         ) {
             Spacer(modifier = Modifier.height(40.dp))
-            
-            // Title
-            Text(
-                text = "Bem vindo\na Rotina !!",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Normal,
-                fontFamily = kronaOneFont,
-                color = Color.Black,
-                lineHeight = 28.sp
-            )
-            
-            Spacer(modifier = Modifier.height(40.dp))
-            
-            // Create Button
-            Button(
-                onClick = { },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(48.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFF6C7CE7)
-                ),
-                shape = RoundedCornerShape(12.dp)
+
+            // Title with arrow
+            Row(
+                verticalAlignment = Alignment.Top
             ) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Seta",
+                    tint = Color.Black,
+                    modifier = Modifier
+                        .size(24.dp)
+                        .padding(top = 4.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Criar",
-                    fontSize = 16.sp,
+                    text = "Bem vindo\na Rotina !!",
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = kronaOneFont,
-                    color = Color.White
+                    color = Color.Black,
+                    lineHeight = 28.sp
                 )
             }
-            
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+// Black line under title
+            androidx.compose.material3.HorizontalDivider(
+                modifier = Modifier.fillMaxWidth(),
+                thickness = 2.dp,
+                color = Color.Black
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+
+            // Create Button
+            OutlinedButton(
+                onClick = { },
+                modifier = Modifier
+                    .width(120.dp)
+                    .height(36.dp),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    containerColor = Color(0xFF6C7CE7),
+                    contentColor = Color.White
+                ),
+                border = androidx.compose.foundation.BorderStroke(2.dp, Color.White),
+                shape = RoundedCornerShape(12.dp),
+                elevation = ButtonDefaults.buttonElevation(
+                    defaultElevation = 6.dp,
+                    pressedElevation = 8.dp,
+                    disabledElevation = 0.dp
+                ),
+                contentPadding = PaddingValues(start = 6.dp, end = 0.dp)
+            ) {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Add,
+                        contentDescription = "Adicionar",
+                        tint = Color.White
+                    )
+                    Spacer(modifier = Modifier.width(6.dp))
+                    Text(
+                        text = "Criar",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = kronaOneFont,
+                        color = Color.White
+                    )
+                }
+            }
+
             Spacer(modifier = Modifier.height(24.dp))
-            
+
             // Description Text
             Text(
                 text = "Crie uma nova\nrotina ao seu Bebê",
@@ -159,14 +178,15 @@ fun RotinaDetalhesScreen() {
                 color = Color.Black,
                 lineHeight = 20.sp
             )
-            
+
             Spacer(modifier = Modifier.height(40.dp))
-            
+
             // Routine Card
             Card(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp),
+                    .fillMaxWidth(0.9f)
+                    .height(220.dp)
+                    .align(Alignment.Start),
                 shape = RoundedCornerShape(16.dp),
                 colors = CardDefaults.cardColors(containerColor = Color(0xFF6C7CE7)),
                 elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
@@ -184,31 +204,20 @@ fun RotinaDetalhesScreen() {
                         fontFamily = kronaOneFont,
                         color = Color.White
                     )
-                    
+
                     Spacer(modifier = Modifier.height(16.dp))
-                    
-                    // ACORDAR Button
-                    Button(
-                        onClick = { },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(48.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(0xFF8A94F0)
-                        ),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "ACORDAR",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Normal,
-                            fontFamily = kronaOneFont,
-                            color = Color.White
-                        )
-                    }
-                    
-                    Spacer(modifier = Modifier.height(12.dp))
-                    
+
+                    // Acordar label (left-aligned)
+                    Text(
+                        text = "ACORDAR",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = kronaOneFont,
+                        color = Color.White
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     // Tasks List
                     Column(
                         verticalArrangement = Arrangement.spacedBy(4.dp)
@@ -238,31 +247,44 @@ fun RotinaDetalhesScreen() {
                             color = Color.White
                         )
                     }
-                    
+
                     Spacer(modifier = Modifier.weight(1f))
-                    
+
                     // Editar Button
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.End
                     ) {
-                        Button(
+                        OutlinedButton(
                             onClick = { },
                             modifier = Modifier
                                 .width(80.dp)
-                                .height(32.dp),
-                            colors = ButtonDefaults.buttonColors(
+                                .height(36.dp)
+                                ,
+                            colors = ButtonDefaults.outlinedButtonColors(
                                 containerColor = Color.White,
                                 contentColor = Color.Black
                             ),
-                            shape = RoundedCornerShape(16.dp)
+                            border = androidx.compose.foundation.BorderStroke(1.dp, Color.Black),
+                            shape = RoundedCornerShape(16.dp),
+                            elevation = ButtonDefaults.buttonElevation(
+                                defaultElevation = 6.dp,
+                                pressedElevation = 8.dp
+                            ),
+                            contentPadding = PaddingValues(start = 8.dp, end = 8.dp)
                         ) {
-                            Text(
-                                text = "Editar",
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Normal,
-                                fontFamily = kronaOneFont
-                            )
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = "Editar",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Normal,
+                                    fontFamily = kronaOneFont
+                                )
+                            }
                         }
                     }
                 }
